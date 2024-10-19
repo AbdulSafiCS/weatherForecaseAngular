@@ -1,4 +1,4 @@
 export const environment = {
-    baseUrl: "http://localhost:5186/weatherforecast",
-    
+    baseUrl: "http://localhost:5186/",
+
 };

@@ -29,7 +29,7 @@ export class WeatherComponent implements OnInit {
   }
 
   getForecasts() {
-    this.http.get<WeatherForecast[]>(`${environment.baseUrl} WeatherForecast`).subscribe(
+    this.http.get<WeatherForecast[]>(`${environment.baseUrl}weatherforecast`).subscribe(
       (result) => {
         this.forecasts = result;
       },
