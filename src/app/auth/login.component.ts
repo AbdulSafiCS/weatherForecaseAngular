@@ -32,7 +32,11 @@ onSubmit(): void {
     {
       next: result => {
         loginResponse = result;
-        console.log(loginResponse);
+        if (result.success) {
+          localStorage.setItem("tokenValue", result.token)
+        } else {
+          
+        }
       },
       error: e => console.error(e)
     }
