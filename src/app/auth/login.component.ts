@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ReactiveFormsModule , FormControl, FormGroup, RequiredValidator, UntypedFormGroup, Validators} from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { MatInputModule } from '@angular/material/input';
 import { AuthService } from './auth.service';
 import { LoginRequest } from './login-request';
@@ -14,6 +14,7 @@ import { LoginResponse } from './login-response';
   styleUrl: './login.component.scss'
 })
 export class LoginComponent implements OnInit {
+
 ngOnInit(): void {
   this.form = new FormGroup({
     userName: new FormControl("", Validators.required),
@@ -33,7 +34,8 @@ onSubmit(): void {
       next: result => {
         loginResponse = result;
         if (result.success) {
-          localStorage.setItem("tokenValue", result.token)
+          localStorage.setItem("tokenValue", result.token);
+          this.router.navigate(["/"]);
         } else {
           
         }
@@ -42,7 +44,7 @@ onSubmit(): void {
     }
       );
 }
-constructor(private authService: AuthService){}
+constructor(private authService: AuthService, private router: Router){}
 
 
 
